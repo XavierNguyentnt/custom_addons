@@ -1,99 +1,104 @@
 # -*- coding: utf-8 -*-
-###################################################################################
-#    A part of OpenHRMS Project <https://www.openhrms.com>
+#############################################################################
+#    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2018-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
-#    Author: Jesni Banu (<https://www.cybrosys.com>)
 #
-#    This program is free software: you can modify
-#    it under the terms of the GNU Affero General Public License (AGPL) as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    Copyright (C) 2024-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
+#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#
+#    You can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    (LGPL v3) along with this program.
+#    If not, see <http://www.gnu.org/licenses/>.
 #
-###################################################################################
-from datetime import datetime
-
-from odoo import models, fields, api, _
+#############################################################################
+from odoo import fields, models, _
 
 
-class HrAnnouncements(models.Model):
+class HrEmployee(models.Model):
+    """ Inherited model 'hr.employee' with additional
+    fields and methods related to announcements."""
     _inherit = 'hr.employee'
 
-    def _announcement_count(self):
-        now = datetime.now()
-        now_date = now.date()
-        for obj in self:
-            announcement_ids_general = self.env['hr.announcement'].sudo().search([('is_announcement', '=', True),
-                                                                                 ('state', 'in', ('approved', 'done')),
-                                                                                  ('date_start', '<=', now_date)])
-            announcement_ids_emp = self.env['hr.announcement'].sudo().search([('employee_ids', 'in', self.id),
-                                                                              ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
-            announcement_ids_dep = self.env['hr.announcement'].sudo().search([('department_ids', 'in', self.department_id.id),
-                                                                              ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
-            announcement_ids_job = self.env['hr.announcement'].sudo().search([('position_ids', 'in', self.job_id.id),
-                                                                              ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
+    announcement_count = fields.Integer(compute='_compute_announcement_count',
+                                        string='# Announcements',
+                                        help="Count of Announcements")
 
-            announcement_ids = announcement_ids_general.ids + announcement_ids_emp.ids + announcement_ids_dep.ids + announcement_ids_job.ids
+    def _compute_announcement_count(self):
+        """ Compute announcement count for an employee """
+        for employee in self:
+            announcement_ids_general = self.env[
+                'hr.announcement'].sudo().search_count(
+                [('is_announcement', '=', True),
+                 ('state', '=', 'approved'),
+                 ('date_start', '<=', fields.Date.today())])
+            announcement_ids_emp = (self.env['hr.announcement'].
+            sudo().search_count(
+                [('employee_ids', 'in', self.id),
+                 ('state', '=', 'approved'),
+                 ('date_start', '<=', fields.Date.today())]))
+            announcement_ids_dep = (self.env['hr.announcement'].
+            sudo().search_count(
+                [('department_ids', 'in', self.department_id.id),
+                 ('state', '=', 'approved'),
+                 ('date_start', '<=', fields.Date.today())]))
+            announcement_ids_job = (self.env['hr.announcement'].
+            sudo().search_count(
+                [('position_ids', 'in', self.job_id.id),
+                 ('state', '=', 'approved'),
+                 ('date_start', '<=', fields.Date.today())]))
+            employee.announcement_count = (announcement_ids_general +
+                                           announcement_ids_emp +
+                                           announcement_ids_dep +
+                                           announcement_ids_job)
 
-            obj.announcement_count = len(set(announcement_ids))
-
-    def announcement_view(self):
-        now = datetime.now()
-        now_date = now.date()
-        for obj in self:
-
-            announcement_ids_general = self.env['hr.announcement'].sudo().search([('is_announcement', '=', True),
-                                                                                  ('state', 'in', ('approved', 'done')),
-                                                                                  ('date_start', '<=', now_date)])
-            announcement_ids_emp = self.env['hr.announcement'].sudo().search([('employee_ids', 'in', self.id),
-                                                                              ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
-            announcement_ids_dep = self.env['hr.announcement'].sudo().search([('department_ids', 'in', self.department_id.id),
-                                                                             ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
-            announcement_ids_job = self.env['hr.announcement'].sudo().search([('position_ids', 'in', self.job_id.id),
-                                                                              ('state', 'in', ('approved', 'done')),
-                                                                              ('date_start', '<=', now_date)])
-
-            ann_obj = announcement_ids_general.ids + announcement_ids_emp.ids + announcement_ids_job.ids + announcement_ids_dep.ids
-
-            ann_ids = []
-
-            for each in ann_obj:
-                ann_ids.append(each)
-            view_id = self.env.ref('hr_reward_warning.view_hr_announcement_form').id
-            if ann_ids:
-                if len(ann_ids) > 1:
-                    value = {
-                        'domain': str([('id', 'in', ann_ids)]),
-                        'view_mode': 'tree,form',
-                        'res_model': 'hr.announcement',
-                        'view_id': False,
-                        'type': 'ir.actions.act_window',
-                        'name': _('Announcements'),
-                        'res_id': ann_ids
-                    }
-                else:
-                    value = {
-                        'view_mode': 'form',
-                        'res_model': 'hr.announcement',
-                        'view_id': view_id,
-                        'type': 'ir.actions.act_window',
-                        'name': _('Announcements'),
-                        'res_id': ann_ids and ann_ids[0]
-                    }
-                return value
-
-    announcement_count = fields.Integer(compute='_announcement_count', string='# Announcements', help="Count of Announcement's")
+    def action_open_announcements(self):
+        """ Open a view displaying announcements related to the employee. """
+        announcement_ids_general = self.env[
+            'hr.announcement'].sudo().search(
+            [('is_announcement', '=', True),
+             ('state', '=', 'approved'),
+             ('date_start', '<=', fields.Date.today())])
+        announcement_ids_emp = self.env['hr.announcement'].sudo().search(
+            [('employee_ids', 'in', self.id),
+             ('state', '=', 'approved'),
+             ('date_start', '<=', fields.Date.today())])
+        announcement_ids_dep = self.env['hr.announcement'].sudo().search(
+            [('department_ids', 'in', self.department_id.id),
+             ('state', '=', 'approved'),
+             ('date_start', '<=', fields.Date.today())])
+        announcement_ids_job = self.env['hr.announcement'].sudo().search(
+            [('position_ids', 'in', self.job_id.id),
+             ('state', '=', 'approved'),
+             ('date_start', '<=', fields.Date.today())])
+        announcement_ids = (announcement_ids_general.ids +
+                            announcement_ids_emp.ids +
+                            announcement_ids_job.ids + announcement_ids_dep.ids)
+        view_id = self.env.ref('hr_reward_warning.hr_announcement_view_form').id
+        if announcement_ids:
+            if len(announcement_ids) > 1:
+                value = {
+                    'domain': [('id', 'in', announcement_ids)],
+                    'view_mode': 'tree,form',
+                    'res_model': 'hr.announcement',
+                    'type': 'ir.actions.act_window',
+                    'name': _('Announcements'),
+                }
+            else:
+                value = {
+                    'view_mode': 'form',
+                    'res_model': 'hr.announcement',
+                    'view_id': view_id,
+                    'type': 'ir.actions.act_window',
+                    'name': _('Announcements'),
+                    'res_id': announcement_ids and announcement_ids[0],
+                }
+            return value

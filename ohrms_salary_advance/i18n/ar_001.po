@@ -42,7 +42,7 @@ msgstr "رمز نوع النشاط"
 
 #. module: ohrms_salary_advance
 #: model:ir.model.fields,field_description:ohrms_salary_advance.field_salary_advance__advance
-#: model:ir.ui.menu,name:ohrms_salary_advance.parent_menu_salary_advance
+#: model:ir.ui.menu,name:ohrms_salary_advance.salary_advance_menu_root
 msgid "Advance"
 msgstr "تقدم"
 
@@ -52,18 +52,18 @@ msgid "Advance Salary"
 msgstr "راتب مقدما"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_form
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_form
 msgid "Approve"
 msgstr "يوافق"
 
 #. module: ohrms_salary_advance
 #: model:ir.model.fields.selection,name:ohrms_salary_advance.selection__salary_advance__state__approve
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Approved"
 msgstr "وافق"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Approved Requests"
 msgstr "الطلبات المعتمدة"
 
@@ -73,7 +73,7 @@ msgid "Attachment Count"
 msgstr "عدد المرفقات"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_form
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_form
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -93,9 +93,9 @@ msgid "Contract"
 msgstr "عقد"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.action_my_salary_advance
-#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.action_my_salary_advance_request_approved
-#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.action_salary_advance_to_approve
+#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.salary_advance_own_action
+#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.salary_advance_own_request_approved_action
+#: model_terms:ir.actions.act_window,help:ohrms_salary_advance.salary_advance_to_approve_action
 msgid "Create Requests."
 msgstr ".إنشاء طلبات"
 
@@ -121,7 +121,7 @@ msgstr "عملة"
 
 #. module: ohrms_salary_advance
 #: model:ir.model.fields,field_description:ohrms_salary_advance.field_salary_advance__date
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Date"
 msgstr "تاريخ"
 
@@ -148,7 +148,7 @@ msgstr "مشروع"
 #. module: ohrms_salary_advance
 #: model:ir.model.fields,field_description:ohrms_salary_advance.field_salary_advance__employee_id
 #: model:ir.model.fields,help:ohrms_salary_advance.field_salary_advance__employee_id
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Employee"
 msgstr "الموظف"
 
@@ -260,12 +260,12 @@ msgid "My Activity Deadline"
 msgstr "الموعد النهائي لنشاطي"
 
 #. module: ohrms_salary_advance
-#: model:ir.ui.menu,name:ohrms_salary_advance.menu_my_salary_advance_approved
+#: model:ir.ui.menu,name:ohrms_salary_advance.salary_advance_menu_my_approved
 msgid "My Approved Salary Advance"
 msgstr "سلف الراتب المعتمد"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "My Requests"
 msgstr "طلباتي"
 
@@ -275,7 +275,7 @@ msgid "Name"
 msgstr "اسم"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "New Requests"
 msgstr "طلبات جديدة"
 
@@ -341,7 +341,7 @@ msgid "Reason"
 msgstr "السبب"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_form
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_form
 msgid "Reject"
 msgstr "رفض"
 
@@ -351,7 +351,7 @@ msgid "Rejected"
 msgstr "مرفوض"
 
 #. module: ohrms_salary_advance
-#: model:ir.ui.menu,name:ohrms_salary_advance.menu_my_salary_advance
+#: model:ir.ui.menu,name:ohrms_salary_advance.salary_advance_menu_own
 msgid "Request Salary Advance"
 msgstr "طلب الراتب مقدما"
 
@@ -372,17 +372,17 @@ msgid "SMS Delivery error"
 msgstr "خطأ في تسليم الرسائل القصيرة"
 
 #. module: ohrms_salary_advance
-#: model:ir.actions.act_window,name:ohrms_salary_advance.action_my_salary_advance
-#: model:ir.actions.act_window,name:ohrms_salary_advance.action_my_salary_advance_request_approved
-#: model:ir.actions.act_window,name:ohrms_salary_advance.action_salary_advance_to_approve
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_form
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_tree
+#: model:ir.actions.act_window,name:ohrms_salary_advance.salary_advance_own_action
+#: model:ir.actions.act_window,name:ohrms_salary_advance.salary_advance_own_request_approved_action
+#: model:ir.actions.act_window,name:ohrms_salary_advance.salary_advance_to_approve_action
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_form
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_tree
 msgid "Salary Advance"
 msgstr "سلفه على الراتب"
 
 #. module: ohrms_salary_advance
-#: model:ir.ui.menu,name:ohrms_salary_advance.menu_salary_advance
+#: model:ir.ui.menu,name:ohrms_salary_advance.salary_advance_menu_to_approve
 msgid "Salary Advance To Approve"
 msgstr "الراتب مقدما للموافقة"
 
@@ -402,12 +402,12 @@ msgid "Salary advance after days"
 msgstr "سلفة الراتب بعد أيام"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Search"
 msgstr "بحث"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "State"
 msgstr "حالة"
 
@@ -430,7 +430,7 @@ msgstr ""
 "تنظيم: الأنشطة المستقبلية."
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_form
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_form
 msgid "Submit"
 msgstr "إرسال"
 
@@ -445,7 +445,7 @@ msgid "Submitted"
 msgstr "قدمت"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "Submitted Requests"
 msgstr "الطلبات المقدمة"
 
@@ -455,12 +455,12 @@ msgid "The Advance is greater than the maximum percentage in salary structure"
 msgstr "السلفة أكبر من النسبة المئوية القصوى في هيكل الرواتب"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "To Approve"
 msgstr "ليوافق"
 
 #. module: ohrms_salary_advance
-#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.view_salary_advance_filter
+#: model_terms:ir.ui.view,arch_db:ohrms_salary_advance.salary_advance_view_search
 msgid "To Submit"
 msgstr "لتقديم"
 

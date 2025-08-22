@@ -1,48 +1,49 @@
 # -*- coding: utf-8 -*-
-###################################################################################
+#############################################################################
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2020-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
-#    Author: Niyas Raphy(<https://www.cybrosys.com>)
 #
-#    This program is free software: you can modify
-#    it under the terms of the GNU Affero General Public License (AGPL) as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    Copyright (C) 2024-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
+#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#
+#    You can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    (LGPL v3) along with this program.
+#    If not, see <http://www.gnu.org/licenses/>.
 #
-###################################################################################
+#############################################################################
 {
     'name': 'Open HRMS Resignation',
-    'version': '15.0.1.1.0',
-    'summary': 'Handle the resignation process of the employee',
-    'live_test_url': 'https://youtu.be/BorJthxY_VI',
+    'version': '18.0.1.0.0',
+    'category': 'Human Resources',
+    'summary': 'Manages the resignation process of the employees',
+    'description': """This module helps to create and approve/reject employee
+     resignation requests""",
     'author': 'Cybrosys Techno solutions,Open HRMS',
     'company': 'Cybrosys Techno Solutions',
-    'website': 'https://www.openhrms.com',
-    'depends': ['hr', 'hr_employee_updation', 'mail'],
-    'category': 'Generic Modules/Human Resources',
     'maintainer': 'Cybrosys Techno Solutions',
+    'website': 'https://www.openhrms.com',
+    'depends': ['hr_employee_updation'],
     'data': [
-        'security/security.xml',
+        'security/hr_resignation_security.xml',
         'security/ir.model.access.csv',
-        'data/resign_employee.xml',
-        'views/hr_employee.xml',
-        'views/resignation_view.xml',
-        'views/approved_resignation.xml',
-        'views/resignation_sequence.xml',
+        'data/ir_sequence_data.xml',
+        'data/ir_cron_data.xml',
+        'views/hr_employee_views.xml',
+        'views/hr_resignation_views.xml',
     ],
+    'live_test_url': 'https://youtu.be/BorJthxY_VI',
+    'images': ['static/description/banner.jpg'],
+    'license': 'LGPL-3',
     'installable': True,
-    'application': False,
     'auto_install': False,
-    'images': ['static/description/banner.png'],
-    'license': 'AGPL-3',
+    'application': True,
 }

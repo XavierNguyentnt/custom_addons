@@ -27,7 +27,7 @@ msgstr "<span> أيام </ span>"
 
 #. module: hr_employee_updation
 #: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee__id_attachment_id
-#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee__passport_attachment_id
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee__passport_attachment_ids
 msgid "Attachment"
 msgstr "المرفق"
 
@@ -102,19 +102,19 @@ msgid "Expiry date of Passport ID"
 msgstr "تاريخ انتهاء صلاحية جواز السفر"
 
 #. module: hr_employee_updation
-#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee__fam_ids
+#: model:ir.model.fields,field_description:hr_employee_updation.field_hr_employee__family_info_ids
 msgid "Family"
 msgstr "عائلة"
 
 #. module: hr_employee_updation
-#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__fam_ids
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__family_info_ids
 msgid "Family Information"
 msgstr "معلومات العائلة"
 
 #. module: hr_employee_updation
 #: model:ir.actions.server,name:hr_employee_updation.employee_data_reminder_ir_actions_server
-#: model:ir.cron,cron_name:hr_employee_updation.employee_data_reminder
-#: model:ir.cron,name:hr_employee_updation.employee_data_reminder
+#: model:ir.cron,cron_name:hr_employee_updation.ir_cron_employee_data_reminder
+#: model:ir.cron,name:hr_employee_updation.ir_cron_employee_data_reminder
 msgid "HR Employee Data Expiration"
 msgstr "موظف بيانات الموارد البشرية انتهاء الصلاحية"
 
@@ -124,7 +124,7 @@ msgid "HR Employee Family"
 msgstr "عائلة موظف الموارد البشرية"
 
 #. module: hr_employee_updation
-#: model:ir.ui.menu,name:hr_employee_updation.menu_hr_management
+#: model:ir.ui.menu,name:hr_employee_updation.hr_management_menu
 msgid "HR Management"
 msgstr "إدارة الموارد البشرية"
 
@@ -236,12 +236,12 @@ msgid "Select corresponding Employee"
 msgstr "حدد الموظف المقابل"
 
 #. module: hr_employee_updation
-#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__passport_attachment_id
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__passport_attachment_ids
 msgid "You can attach the copy of Passport"
 msgstr "يمكنك إرفاق نسخة من جواز السفر"
 
 #. module: hr_employee_updation
-#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__id_attachment_id
+#: model:ir.model.fields,help:hr_employee_updation.field_hr_employee__identification_attachment_ids
 msgid "You can attach the copy of your Id"
 msgstr "يمكنك إرفاق نسخة من هويتك"
 

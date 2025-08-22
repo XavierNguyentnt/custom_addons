@@ -52,7 +52,7 @@ msgstr ""
 #. module: oh_employee_documents_expiry
 #: model:ir.model,name:oh_employee_documents_expiry.model_ir_attachment
 #: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_hr_document__attach_id
-#: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_hr_employee_document__doc_attachment_id
+#: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_hr_employee_document__doc_attachment_ids
 #: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_ir_attachment__attach_rel
 #: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_ir_attachment__doc_attach_rel
 msgid "Attachment"
@@ -183,7 +183,7 @@ msgid "Employee Documents"
 msgstr "وثائق الموظف"
 
 #. module: oh_employee_documents_expiry
-#: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_hr_employee_document__employee_ref
+#: model:ir.model.fields,field_description:oh_employee_documents_expiry.field_hr_employee_document__employee_ref_id
 msgid "Employee Ref"
 msgstr "مرجع الموظف"
 
@@ -285,7 +285,7 @@ msgstr "الإخطار في تاريخ انتهاء الصلاحية"
 
 #. module: oh_employee_documents_expiry
 #: model:ir.model.fields,help:oh_employee_documents_expiry.field_hr_document__attach_id
-#: model:ir.model.fields,help:oh_employee_documents_expiry.field_hr_employee_document__doc_attachment_id
+#: model:ir.model.fields,help:oh_employee_documents_expiry.field_hr_employee_document__doc_attachment_ids
 msgid "You can attach the copy of your document"
 msgstr "يمكنك إرفاق نسخة من المستند"
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- Adding sequence to the HRMS modules root menu-->
     <data>
         <menuitem name="Recruitment"
                   id="hr_recruitment.menu_hr_recruitment_root"
                   web_icon="hr_recruitment,static/description/icon.png"
-                  groups="hr_recruitment.group_hr_recruitment_user"
                   sequence="4"/>
 
         <menuitem id="hr_attendance.menu_hr_attendance_root"
                   name="Attendances" sequence="7"
-                  groups="hr_attendance.group_hr_attendance"
+                  groups="hr_attendance.group_hr_attendance_own_reader"
                   web_icon="hr_attendance,static/description/icon.png"/>
 
         <menuitem name="Leaves"

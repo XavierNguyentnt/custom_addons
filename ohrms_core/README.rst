@@ -1,3 +1,7 @@
+.. image:: https://img.shields.io/badge/licence-LGPL--3-green.svg
+   :target: https://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :alt: License: LGPL-3
+
 Open HRMS CORE
 ==============
 * Open HRMS is a one-stop solution to manage human resource pool in a better and efficient format.
@@ -6,36 +10,41 @@ Open HRMS CORE
 * Open HRMS CORE module is a suit that brings all the individual module into a single.
 * It has selective - install approach for extra features.
 
-Features
-========
-* Interactive Theme
-* HR Dashboard
-* HR Multi Company
-* Biometric Device Automation
-* Shift Management
-* Loan Management
-* Salary Advance
-* Employee Reminders
-* Employee Branch Transfer
-* Advanced Employee Master
-* Appraisal Plans & Strategies
-* Employee Insurance
-* HR Documents Management
-* Entry & Exit Checklist
-* Resignation Process
-* HR Announcements
-* Appreciations & Warnings
-* Custody/Property Management
-* Automation on Leaves Requests Mails
-* Vacation Management
-* Law Suit Management
+Configuration
+=============
+* Install python library pandas : - "sudo pip3 install pandas" on terminal.
 
-Technical Notes
-===============
+Company
+=======
+* `Cybrosys Techno Solutions <https://cybrosys.com/>`__
+
+License
+=======
+General Public License, Version 3 (LGPL v3).
+(http://www.gnu.org/licenses/lgpl-3.0-standalone.html)
+
+Credits
+=======
+* Developers:   (V18) Raneesha MK
+                (V17) Vishnuraj P
 
 Contacts
 ========
-* Open HRMS <https://www.openhrms.com>
-* Cybrosys Techno Solutions <https://www.cybrosys.com>
+* Mail Contact : odoo@cybrosys.com
+* Website : http://www.cybrosys.com
 
+Bug Tracker
+===========
+Bugs are tracked on GitHub Issues. In case of trouble, please check there if your issue has already been reported.
 
+Maintainer
+==========
+.. image:: https://cybrosys.com/images/logo.png
+   :target: https://cybrosys.com
+
+This module is maintained by Cybrosys Technologies.
+For support and more information, please visit https://www.openhrms.com or https://www.cybrosys.com
+
+Further information
+===================
+HTML Description: `<static/description/index.html>`__

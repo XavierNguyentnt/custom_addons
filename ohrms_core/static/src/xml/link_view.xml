@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-extend="UserMenu">
+<!--UserMenu Template-->
+    <t t-name="ohrms_core.UserMenu" t-extend="UserMenu">
         <t t-jquery="div.dropdown-menu" t-operation="replace">
             <div class="dropdown-menu" role="menu">
                 <a role="menuitem" href="#" data-menu="documentation" class="dropdown-item">Documentation</a>
@@ -12,14 +13,15 @@
             </div>
         </t>
     </t>
+<!--Search Result template-->
     <t t-name="ohrms_core.SearchResults">
-        <t t-foreach="results" t-as="result">
+        <t t-foreach="results" t-as="result" t-key="result.id">
             <a t-attf-class="o-menu-search-result dropdown-item col-12 ml-auto mr-auto #{result_first ? 'active' : ''}"
-                 t-attf-style="background-image:url('data:image/png;base64,#{result.webIconData}')"
-                 t-attf-href="#menu_id=#{result.id}&amp;action_id=#{result.actionID}"
+                 t-attf-style="background-image:url('#{result.webIconData}')"
+                 t-attf-href="action-#{result.actionID}"
                  t-att-data-menu-id="result.id"
                  t-att-data-action-id="result.actionID"
-                 t-raw="result.name"
+                 t-out="result.name"
                  onclick="$('.dropdown-menu').removeClass('show'); $('.search-results').addClass('o_hidden'); $('.app-menu').removeClass('o_hidden'); $('.search-input input').val('');"/>
         </t>
     </t>

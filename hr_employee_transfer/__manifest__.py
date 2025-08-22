@@ -1,49 +1,46 @@
 # -*- coding: utf-8 -*-
-################################################################################
+#############################################################################
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 202-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
-#    Author: Hajaj Roshan (<https://www.cybrosys.com>)
 #
-#    This program is free software: you can modify
-#    it under the terms of the GNU Affero General Public License (AGPL) as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    Copyright (C) 2023-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
+#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#
+#    You can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    (LGPL v3) along with this program.
+#    If not, see <http://www.gnu.org/licenses/>.
 #
-################################################################################
-
+#############################################################################
 {
     'name': 'Open HRMS Branch Transfer',
-    'version': '15.0.1.1.1',
+    'version': '18.0.1.0.0',
+    'category': 'Human Resources',
     'summary': 'Employee transfer between branches',
+    'description': 'This modules allows the user to transfer an employee from '
+                   'one branch to another branch',
     'live_test_url': 'https://youtu.be/Qva8kW6xn4c',
-    'category': 'Generic Modules/Human Resources',
     'author': 'Cybrosys Techno solutions,Open HRMS',
-    'maintainer': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
-    'website': 'https://www.openhrms.com',
-    'depends': ['base',
-                'hr',
-                'hr_contract',
-                'hr_employee_updation'
-                ],
+    'maintainer': 'Cybrosys Techno Solutions',
+    'website': 'https://cybrosys.com, https://www.openhrms.com',
+    'depends': ['hr_contract'],
     'data': [
-        'views/employee_transfer.xml',
         'security/ir.model.access.csv',
-        'security/branch_security.xml',
+        'security/hr_employee_security.xml',
+        'views/employee_transfer_views.xml',
     ],
-    'images': ['static/description/banner.png'],
+    'images': ['static/description/banner.jpg'],
+    'license': 'LGPL-3',
     'installable': True,
-    'application': True,
     'auto_install': False,
-    'license': 'AGPL-3',
+    'application': True,
 }

@@ -1,50 +1,51 @@
 # -*- coding: utf-8 -*-
-###################################################################################
-#    A part of OpenHRMS Project <https://www.openhrms.com>
+#############################################################################
+#    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2020-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
 #
-#    This program is free software: you can modify
-#    it under the terms of the GNU Affero General Public License (AGPL) as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    Copyright (C) 2024-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
+#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#
+#    You can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    (LGPL v3) along with this program.
+#    If not, see <http://www.gnu.org/licenses/>.
 #
-###################################################################################
+#############################################################################
 {
     'name': 'Open HRMS Loan Management',
-    'version': '15.0.1.1.1',
-    'summary': 'Manage Loan Requests',
-    'description': """
-        Helps you to manage Loan Requests of your company's staff.
-        """,
-    'category': 'Generic Modules/Human Resources',
+    'version': '18.0.1.0.0',
+    'category': 'Human Resources',
+    'summary': 'Manage Employee Loan Requests',
+    'description': """This module facilitates the creation and management of 
+     employee loan requests. The loan amount is automatically deducted from the 
+     salary""",
     'author': "Cybrosys Techno Solutions,Open HRMS",
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'live_test_url': 'https://youtu.be/lAT5cqVZTZI',
-    'website': "https://www.openhrms.com",
-    'depends': [
-        'base', 'hr_payroll_community', 'hr', 'account',
-    ],
+    'website': "https://cybrosys.com, https://www.openhrms.com",
+    'depends': ['hr', 'account', 'hr_payroll_community'],
     'data': [
+        'security/hr_loan_security.xml',
         'security/ir.model.access.csv',
-        'security/security.xml',
-        'views/hr_loan_seq.xml',
-        'data/salary_rule_loan.xml',
-        'views/hr_loan.xml',
-        'views/hr_payroll.xml',
+        'data/ir_sequence_data.xml',
+        'views/hr_loan_views.xml',
+        'views/hr_payslip_views.xml',
+        'views/hr_employee_views.xml',
     ],
+    'demo': ['data/hr_salary_rule_demo.xml',
+             'data/hr_rule_input_demo.xml', ],
     'images': ['static/description/banner.png'],
-    'license': 'AGPL-3',
+    'license': 'LGPL-3',
     'installable': True,
     'auto_install': False,
     'application': False,

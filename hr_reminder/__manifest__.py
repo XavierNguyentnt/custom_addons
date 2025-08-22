@@ -1,51 +1,54 @@
 # -*- coding: utf-8 -*-
-###################################################################################
+#############################################################################
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2021-TODAY Cybrosys Technologies (<https://www.cybrosys.com>).
 #
-#    This program is free software: you can modify
-#    it under the terms of the GNU Affero General Public License (AGPL) as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    Copyright (C) 2024-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
+#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#
+#    You can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    (LGPL v3) along with this program.
+#    If not, see <http://www.gnu.org/licenses/>.
 #
-###################################################################################
+#############################################################################
 {
     'name': 'Open HRMS Reminders Todo',
-    'version': '15.0.1.1.0',
-    'category': 'Generic Modules/Human Resources',
+    'version': '18.0.1.0.0',
+    'category': 'Human Resources',
     'summary': 'HR Reminder For OHRMS',
+    'description': """This module is a powerful and easy-to-use tool that can 
+    help you improve your HR processes and ensure that important events are 
+    never forgotten.""",
     'author': 'Cybrosys Techno solutions,Open HRMS',
     'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
     'live_test_url': "https://youtu.be/tOG92cMa4Rg",
-    'depends': ['base', 'hr'],
+    'depends': ['hr'],
     'data': [
-        'security/ir.model.access.csv',
         'security/hr_reminder_security.xml',
-        'views/hr_reminder_view.xml',
-        
+        'security/ir.model.access.csv',
+        'views/hr_reminder_views.xml',
     ],
     'assets': {
         'web.assets_backend': [
+            'hr_reminder/static/src/css/notification.css',
             'hr_reminder/static/src/scss/reminder.scss',
+            'hr_reminder/static/src/xml/reminder_topbar.xml',
             'hr_reminder/static/src/js/reminder_topbar.js',
         ],
-        'web.assets_qweb': [
-            'hr_reminder/static/src/xml/reminder_topbar.xml',
-        ],
     },
-    'images': ['static/description/banner.png'],
-    'license': 'AGPL-3',
+    'images': ['static/description/banner.jpg'],
+    'license': 'LGPL-3',
     'installable': True,
     'auto_install': False,
     'application': False,

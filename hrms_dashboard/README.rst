@@ -1,49 +1,48 @@
-HR Dashboard
-============
+.. image:: https://img.shields.io/badge/licence-LGPL--3-green.svg
+   :target: https://www.gnu.org/licenses/lgpl-3.0-standalone.html
+   :alt: License: LGPL-3
 
+Open HRMS HR Dashboard
+======================
 Keep your eyes on your whole Human resource analysis.
 
-Depends
+Configuration
+=============
+* Install python library pandas : - "sudo pip3 install pandas" on terminal.
+
+Company
 =======
-[hr] addon Odoo
+* `Cybrosys Techno Solutions <https://cybrosys.com/>`__
 
-Tech
-====
-* [Python] - Models
-* [XML] - Odoo views
+License
+=======
+General Public License, Version 3 (LGPL v3).
+(http://www.gnu.org/licenses/lgpl-3.0-standalone.html)
 
-Installation
-============
-- www.odoo.com/documentation/15.0/setup/install.html
-- Install the dependency package Pandas using the following commands
+Credits
+=======
+* Developers:   (V18) Raneesha  MK
+                (V17) Vishnuraj P
+                (V16) Aswani PC
+                (V14) Naveen V
+* Contact: odoo@cybrosys.com
 
-	* sudo pip3 install pandas
-				or
-	* sudo apt-get install pandas
-
-- Install our custom addon
-
-
+Contacts
+========
+* Mail Contact : odoo@cybrosys.com
 
 Bug Tracker
 ===========
 Bugs are tracked on GitHub Issues. In case of trouble, please check there if your issue has already been reported.
 
-Credits
-=======
-* Cybrosys Techno Solutions <https://www.cybrosys.com>
-
-Author
-------
-
-Developer: Aswani PC, odoo@cybrosys.com
-    		Version 14: Naveen V @cybrosys, Contact: odoo@cybrosys.com
-
-
 Maintainer
-----------
+==========
+.. image:: https://cybrosys.com/images/logo.png
+   :target: https://cybrosys.com
 
 This module is maintained by Cybrosys Technologies.
+For support and more information, please visit https://www.openhrms.com or https://www.cybrosys.com
 
-For support and more information, please visit https://www.openhrms.com
-
+Further information
+===================
+HTML Description: `<static/description/index.html>`__

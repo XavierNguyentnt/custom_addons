@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!--  Broadfactor report template  -->
     <template id="report_broadfactor">
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
@@ -14,6 +15,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <t t-log="lines,'Anjana---------------1'"/>
                             <tr t-foreach="lines" t-as="line">
                                 <t t-if="line['broad_factor']">
                                     <t t-set="broad_factor" t-value="line['broad_factor']"/>
@@ -35,14 +37,12 @@
             </t>
         </t>
     </template>
-    
-          <record id="action_report_broad_factor" model="ir.actions.report">
-            <field name="name">Broad Factor</field>
-            <field name="model">hr.employee.broad.factor</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">hrms_dashboard.report_broadfactor</field>
-            <field name="report_file">hrms_dashboard.report_broadfactor</field>
-        </record>
-
-
+    <!--  Record action for report broad factor.  -->
+    <record id="action_report_broad_factor" model="ir.actions.report">
+        <field name="name">Broad Factor</field>
+        <field name="model">hr.employee.broad.factor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hrms_dashboard.report_broadfactor</field>
+        <field name="report_file">hrms_dashboard.report_broadfactor</field>
+    </record>
 </odoo>
