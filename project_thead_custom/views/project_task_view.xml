@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
+<!-- MỞ RỘNG: BẮT BUỘC HIỂN THỊ MỘT SỐ CỘT TRONG LIST VIEW -->
+<!-- Kết thừa view mặc định của project.task -->
         <record id="view_all_tasks_list_inherit_default_columns" model="ir.ui.view">
             <field name="name">project.task.list.inherit.default.columns</field>
             <field name="model">project.task</field>
@@ -9,56 +10,175 @@
             <field name="mode">primary</field>
             <field name="priority">99</field>
             <field name="arch" type="xml">
+            <!-- Sửa cú pháp: Xóa thuộc tính 'optional' để các cột này luôn hiển thị -->
                 <xpath expr="//field[@name='id']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                    <attribute name="optional"/>
                 </xpath>
-
                 <xpath expr="//field[@name='project_id']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                    <attribute name="optional"/>
                 </xpath>
-                
                 <xpath expr="//field[@name='milestone_id']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                    <attribute name="optional"/>
                 </xpath>
-
                 <xpath expr="//field[@name='user_ids']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='date_deadline']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='activity_ids']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='effective_hours']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='remaining_hours']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='progress']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='rating_last_text']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='date_last_stage_update']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='stage_id']" position="attributes">
+                    <attribute name="optional"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
 
+
+            <!-- Thêm cột date_assign -->
                 <xpath expr="//field[@name='user_ids']" position="after">
                     <field name="date_assign"/>
                 </xpath>
-                
+            </field>
+        </record>
+
+        <!-- ====================================================== -->
+        <!-- GIAO DIỆN CHI TIẾT (FORM VIEW)                        -->
+        <!-- ====================================================== -->    
+        <!-- Kế thừa Form View để đổi nhãn và sắp xếp lại bố cục -->
+        <record id="view_task_form2_inherited_custom_layout" model="ir.ui.view">
+            <field name="name">project.task.form.custom.layout.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="priority">32</field>
+            <field name="arch" type="xml">
+
+                <!-- 1. Đổi nhãn "Customer" thành "Reviewer" -->
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="string">Reviewer</attribute>
+                </xpath>
+
+                <!-- 2. Ẩn các trường ở vị trí gốc để sắp xếp lại -->
+                <xpath expr="//field[@name='user_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//field[@name='date_deadline']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='tag_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+
+                <!-- 3. Tạo một cấu trúc 2 cột mới và sạch sẽ ngay dưới Tiêu đề -->
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <group>
+                        <!-- Cột bên trái -->
+                        <group>
+                            <field name="project_id"/>
+                            <field name="user_ids" widget="many2many_avatar_user"/>
+                            <field name="partner_id" string="Reviewer"/>
+                        </group>
+                        <!-- Cột bên phải -->
+                        <group>
+                            <field name="date_deadline"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                    </group>
                 </xpath>
 
-                <xpath expr="//field[@name='activity_ids']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                <!-- 4. Thêm group Time & Status vào dưới notebook (các tab) -->
+                <xpath expr="//notebook" position="after">
+                     <group string="Time &amp; Status" name="time_status_group">
+                        <group>
+                            <field name="date_assign" readonly="1"/>
+                            <field name="planned_hours" widget="float_time" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="time_spent" widget="float_time" readonly="1"/>
+                            <field name="time_remaining" widget="float_time" readonly="1"/>
+                        </group>
+                    </group>
                 </xpath>
 
-                <xpath expr="//field[@name='effective_hours']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                <!-- 5. Thêm các badge trạng thái vào thanh header -->
+                <xpath expr="//header" position="inside">
+                    <field name="deadline_status" widget="badge"
+                           decoration-success="deadline_status in ('done_early', 'done_on_time')"
+                           decoration-warning="deadline_status == 'on_time'"
+                           decoration-danger="deadline_status in ('late', 'done_late')"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state == '03_approved' or state == '1_done'"
+                           decoration-warning="state == '02_changes_requested'"
+                           decoration-danger="state == '1_canceled'"
+                           decoration-info="state == '04_waiting_normal' or state == '01_in_progress'"/>
                 </xpath>
 
-                <xpath expr="//field[@name='remaining_hours']" position="attributes">
-                    <attribute name="optional">False</attribute>
-                </xpath>
+            </field>
+        </record>
 
-                <xpath expr="//field[@name='progress']" position="attributes">
-                    <attribute name="optional">False</attribute>
+        <!-- Kế thừa Tree View (danh sách) để thêm và sắp xếp các cột -->
+        <record id="view_task_tree2_inherited_custom_columns" model="ir.ui.view">
+            <field name="name">project.task.tree.custom.columns.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+               
+                <!-- Thêm lại trường này (giờ đã có nhãn là Reviewer) vào sau cột Rating -->
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
-                <xpath expr="//field[@name='rating_last_text']" position="attributes">
-                    <attribute name="optional">False</attribute>
-                </xpath>
-                <xpath expr="//field[@name='date_last_stage_update']" position="attributes">
-                    <attribute name="optional">False</attribute>
-                </xpath>
-                <xpath expr="//field[@name='stage_id']" position="attributes">
-                    <attribute name="optional">False</attribute>
+                
+                <!-- Các tùy chỉnh khác giữ nguyên -->
+                <field name="stage_id" position="before">
+                     <field name="state" widget="badge" decoration-success="state == '03_approved' or state == '1_done'" decoration-warning="state == '02_changes_requested'" decoration-danger="state == '1_canceled'" decoration-info="state == '04_waiting_normal' or state == '01_in_progress'"/>
+                </field>
+                <field name="stage_id" position="after">
+                    <field name="deadline_status" widget="badge" decoration-success="deadline_status in ('done_early', 'done_on_time')" decoration-warning="deadline_status == 'on_time'" decoration-danger="deadline_status in ('late', 'done_late')"/>
+                </field>
+                <field name="date_deadline" position="after">
+                    <field name="date_assign"/>
+                    <field name="planned_hours" widget="float_time" sum="Total Planned"/>
+                    <field name="time_spent" widget="float_time"/>
+                    <field name="time_remaining" widget="float_time"/>
+                </field>
+                <xpath expr="//field[@name='rating_last_text']" position="after">
+                    <field name="partner_id" string="Reviewer"/>
                 </xpath>
             </field>
         </record>
+
+        <record id="view_task_search_custom" model="ir.ui.view">
+            <field name="name">project.task.search.custom.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+
+            <!-- Sửa nhãn trong search view -->
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="string">Reviewer</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
 
     </data>
 </odoo>

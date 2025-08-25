@@ -1,0 +1,109 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_thead_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25 04:45+0000\n"
+"PO-Revision-Date: 2025-08-25 04:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese (http://www.transifex.com/odoo/odoo-16/language/vi/)\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,field_description:project_thead_custom.field_project_task__deadline_status
+msgid "Deadline Status"
+msgstr "Trạng thái Deadline"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,help:project_thead_custom.field_project_task__deadline_status
+msgid "Status of the task in relation to its deadline."
+msgstr "Trạng thái của công việc so với hạn chót."
+
+#. module: project_thead_custom
+#: model:ir.model.fields.selection,name:project_thead_custom.selection__project_task__deadline_status__on_time
+msgid "In Progress"
+msgstr "Đang tiến hành"
+
+#. module: project_thead_custom
+#: model:ir.model.fields.selection,name:project_thead_custom.selection__project_task__deadline_status__late
+msgid "Overdue"
+msgstr "Trễ Deadline"
+
+#. module: project_thead_custom
+#: model:ir.model.fields.selection,name:project_thead_custom.selection__project_task__deadline_status__done_early
+msgid "Done Ahead of Schedule"
+msgstr "Hoàn thành trước hạn"
+
+#. module: project_thead_custom
+#: model:ir.model.fields.selection,name:project_thead_custom.selection__project_task__deadline_status__done_on_time
+msgid "Done On Time"
+msgstr "Hoàn thành đúng hạn"
+
+#. module: project_thead_custom
+#: model:ir.model.fields.selection,name:project_thead_custom.selection__project_task__deadline_status__done_late
+msgid "Done Late"
+msgstr "Hoàn thành trễ hạn"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,field_description:project_thead_custom.field_project_task__planned_hours
+msgid "Planned Hours"
+msgstr "Giờ dự kiến"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,help:project_thead_custom.field_project_task__planned_hours
+msgid "Estimated time, calculated automatically = Deadline - Assignment Time."
+msgstr "Thời gian dự kiến, được tính tự động = Hạn chót - Thời gian giao việc."
+
+#. module: project_thead_custom
+#: model:ir.model.fields,field_description:project_thead_custom.field_project_task__time_spent
+msgid "Time Spent (Elapsed)"
+msgstr "Thời gian đã làm (Trôi qua)"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,help:project_thead_custom.field_project_task__time_spent
+msgid "Time elapsed since the task was assigned. Updates on page reload."
+msgstr "Thời gian đã trôi qua kể từ khi giao việc. Cập nhật khi tải lại trang."
+
+#. module: project_thead_custom
+#: model:ir.model.fields,field_description:project_thead_custom.field_project_task__time_remaining
+msgid "Time Remaining"
+msgstr "Thời gian còn lại"
+
+#. module: project_thead_custom
+#: model:ir.model.fields,help:project_thead_custom.field_project_task__time_remaining
+msgid "Remaining time until the deadline. Updates on page reload."
+msgstr "Thời gian còn lại cho đến hạn chót. Cập nhật khi tải lại trang."
+
+#. module: project_thead_custom
+#: model:ir.ui.view,arch_db:project_thead_custom.view_task_form2_inherited_timesheet
+msgid "Time & Status"
+msgstr "Thời gian & Trạng thái"
+
+# MỤC DỊCH CŨ (CHO TREE VIEW)
+#. module: project_thead_custom
+#: model:ir.ui.view,arch_db:project_thead_custom.view_task_tree2_inherited_timesheet
+msgid "Assignment Time"
+msgstr "Thời gian giao việc"
+
+#. module: project_thead_custom
+#: model:ir.ui.view,arch_db:project_thead_custom.view_task_tree2_inherited_timesheet
+msgid "Reviewer"
+msgstr "Người đánh giá"
+
+# MỤC DỊCH MỚI ĐƯỢC BỔ SUNG (CHO FORM VIEW)
+#. module: project_thead_custom
+#: model:ir.ui.view,arch_db:project_thead_custom.view_task_form2_inherited_timesheet
+msgid "Assignment Time"
+msgstr "Thời gian giao việc"
+
+#. module: project_thead_custom
+#: model:ir.ui.view,arch_db:project_thead_custom.view_task_form2_inherited_timesheet
+msgid "Reviewer"
+msgstr "Người đánh giá"
