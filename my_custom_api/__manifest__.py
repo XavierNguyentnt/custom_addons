@@ -3,4 +3,5 @@
     'summary': 'REST API endpoints for React integration.',
     'depends': ['base', 'web'], # Phụ thuộc vào module 'web'
     'installable': True,
+    'license': 'LGPL-3',
 }
