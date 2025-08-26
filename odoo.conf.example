@@ -1,0 +1,17 @@
+[options]
+; ...
+; !! IMPORTANT !!
+; COPY THIS FILE TO odoo.conf AND FILL IN THE CORRECT PATHS FOR YOUR LOCAL MACHINE.
+; DO NOT COMMIT THE odoo.conf FILE.
+; DB path
+db_host = localhost
+db_port = 5432
+db_user = odoo
+db_password = 01092016
+without_demo = all
+; Bật dev mode để thấy lỗi chi tiết, rất hữu ích
+xmlrpc = True
+dev_mode = True
+
+; Addons path using ABSOLUTE paths for stability
+addons_path = F:\DEV\HRMS\odoo-18\addons, F:\DEV\HRMS\custom_addons
